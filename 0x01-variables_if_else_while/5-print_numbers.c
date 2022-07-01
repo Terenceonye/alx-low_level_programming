@@ -13,7 +13,7 @@ int main(void)
 		printf("%d", number);
 		number++;
 	}
-	println("\n");
+	printf("\n");
 
 	return (0);
 }
