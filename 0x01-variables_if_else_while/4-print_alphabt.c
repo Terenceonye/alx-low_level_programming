@@ -12,8 +12,8 @@ int main(void)
 	for (character = 'a'; character <= 'z'; character++)
 	{
 		if (character == 'e' || character == 'q')
-                        continue;
-                        else
+			continue;
+		else
 			putchar(character);
 	}
 
