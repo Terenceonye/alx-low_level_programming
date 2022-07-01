@@ -10,7 +10,7 @@ int main(void)
 {
 	int number = 0;
 
-	while(number<10)
+	while (number<10)
 	{
 		putchar(number);
 		number++;
@@ -19,4 +19,3 @@ int main(void)
 
 	return (0);
 }
-
