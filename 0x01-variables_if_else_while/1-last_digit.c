@@ -18,7 +18,7 @@ int main(void)
 
 	/*My code*/
 	
-	lastDigit = n % 10
+	lastDigit = n % 10;
 
 
 	if (lastDigit > 5)
