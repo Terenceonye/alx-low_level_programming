@@ -16,7 +16,7 @@ int main(void)
 		putchar(number);
 		number++;
 	}
-	while (alphabet<='f')
+	while (alphabet <= 'f')
 	{
 		putchar(alphabet);
 		alphabet++;
