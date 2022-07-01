@@ -13,11 +13,11 @@ int main(void)
 	while (number <= '9')
 	{
 		putchar(number);
+		number++;
 		if (number != '9')
 		{
 			putchar(',');
 			putchar(' ');
-			number++;
 		}
 
 	}
