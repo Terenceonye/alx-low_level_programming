@@ -17,7 +17,6 @@ int main(void)
 	n = rand() - RAND_MAX / 2;
 
 	/*My code*/
-	
 	lastDigit = n % 10;
 
 	if (lastDigit > 5)
