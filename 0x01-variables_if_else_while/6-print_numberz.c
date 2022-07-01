@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 /**
  * main - prints 0 to 9 using putchar
  *
@@ -9,11 +10,12 @@ int main(void)
 {
 	int number = 0;
 
-	for(number=0; number<10; number++)
+	while(number<10)
 	{
 		putchar(number);
+		number++;
 	}
-	printf("\n");
+	putchar("\n");
 
 	return (0);
 }
