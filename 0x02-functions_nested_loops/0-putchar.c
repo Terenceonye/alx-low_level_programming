@@ -18,6 +18,5 @@ _printchar('a');
 _printchar('r');
 _printchar('\n');
 
-
 return (0);
 }
