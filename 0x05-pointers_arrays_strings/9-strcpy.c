@@ -1,4 +1,4 @@
-#include "main.h.h"
+#include "main.h"
 /**
  *_strcpy - update value.
  *@dest: value to be evaluate.
