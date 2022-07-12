@@ -2,13 +2,13 @@
 
 /**
 * _puts - prints any string to stdout
-* @str - ponter variable of type char
+* @str: ponter variable of type char
 * Return: Nothing
 */
 
 void _puts(char *str)
 {
-	int i =0;
+	int i = 0;
 
 	while (str[i] != '\0')
 	{
