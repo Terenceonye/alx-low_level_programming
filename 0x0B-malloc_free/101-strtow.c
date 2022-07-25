@@ -1,4 +1,4 @@
-#iinclude "main.h"
+#include "holberton.h"
 #include <stdlib.h>
 
 /**
