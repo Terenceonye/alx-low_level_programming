@@ -1,35 +1,37 @@
 #include <stdio.h>
 #include <stdlib.h>
-
 /**
- * main - prints opcode of own main function
+ * main - prints the opcode of its own function
  * @argc: argument count
- * @argv: array of arguments
- * Return: 1 or 2 on fail, 0 on success
+ * @argv: argument vector
+ * Return: 0
  */
 int main(int argc, char *argv[])
 {
-	int bytes, i;
-	unsigned char *func_ptr;
+	int con, i;
+	int (*address)(int, char **) = main;
+	unsigned char opcode;
 
 	if (argc != 2)
 	{
 		printf("Error\n");
 		exit(1);
 	}
-	bytes = atoi(argv[1]);
-	if (bytes < 0)
+	con = atoi(argv[1]);
+	if (con < 0)
 	{
 		printf("Error\n");
 		exit(2);
 	}
-	func_ptr = (unsigned char *)main;
-	i = 0;
-	if (bytes > 0)
+	for (i = 0; i < con; i++)
 	{
-		while (i < (bytes - 1))
-			printf("%02hhx ", func_ptr[i++]);
-		printf("%hhx\n", func_ptr[i]);
+		opcode = *(unsigned char *)address;
+		printf("%.2x", opcode);
+		if (i == con - 1)
+			continue;
+		printf(" ");
+		address++;
 	}
+	printf("\n");
 	return (0);
 }
