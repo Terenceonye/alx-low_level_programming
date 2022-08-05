@@ -1,90 +1,53 @@
 #include "variadic_functions.h"
+#include <stdarg.h>
+#include <stdlib.h>
 #include <stdio.h>
 
 /**
- * character - prints char
- * @arg: argument
- */
-void character(va_list arg)
-{
-	char letter;
-
-	letter = va_arg(arg, int);
-	printf("%c", letter);
-}
-/**
- * integer - prints int
- * @arg: argument
- */
-void integer(va_list arg)
-{
-	int num;
-
-	num = va_arg(arg, int);
-	printf("%d", num);
-}
-/**
- * real - prints float
- * @arg: argument
- */
-void real(va_list arg)
-{
-	float num;
-
-	num = va_arg(arg, double);
-	printf("%f", num);
-}
-/**
- * string - prints string
- * @arg: argument
- */
-void string(va_list arg)
-{
-	char *s;
-
-	s = va_arg(arg, char *);
-	if (s == NULL)
-	{
-		printf("(nil)");
-		return;
-	}
-	printf("%s", s);
-}
-/**
- * print_all - prints anything
- * @format: list of types of arg passed to func
- * ...: elipses
- * Return: nothing
+ * print_all - A function prints anyting.
+ * @format: A list of type of arguments passed to the function.
+ * Return: Nothing
  */
 void print_all(const char * const format, ...)
 {
-	va_list any;
-	int i = 0, j = 0;
-	char *separator = "";
-	printer_t funcs[] = {
-		{"c", character},
-		{"i", integer},
-		{"f", real},
-		{"s", string}
-	};
+	va_list ap;
+	char *temp;
+	int i = 0;
 
-	va_start(any, format);
-
-	while (format && (*(format + i)))
+	va_start(ap, format);
+	while (format == NULL)
 	{
-		j = 0;
-
-		while (j < 4 && (*(format + i) != *(funcs[j].symbol)))
-			j++;
-
-		if (j < 4)
+		printf("\n");
+		return;
+	}
+	while (format[i])
+	{
+		switch (format[i])
 		{
-			printf("%s", separator);
-			funcs[j].print(any);
-			separator = ", ";
+			case 'c':
+				printf("%c", (char) va_arg(ap, int));
+				break;
+			case 'i':
+				printf("%d", va_arg(ap, int));
+				break;
+			case 'f':
+				printf("%f", (float) va_arg(ap, double));
+				break;
+			case 's':
+				temp = va_arg(ap, char*);
+				if (temp != NULL)
+				{
+					printf("%s", temp);
+					break;
+				}
+				printf("(nil)");
+				break;
 		}
+		if ((format[i] == 'c' || format[i] == 'i' || format[i] == 'f' ||
+					format[i] == 's') && format[(i + 1)] != '\0')
+			printf(", ");
 		i++;
 	}
+	va_end(ap);
 	printf("\n");
-	va_end(any);
 }
